@@ -1,0 +1,19 @@
+<%- include("partials/header"); -%>
+<%- include("partials/navigation"); -%>
+
+<div class="px-4 py-2 my-4 text-center container-fluid">
+<% customerList.forEach((customer)=>{ %> 
+    <div class="px-4 py-2 my-5 text-center container-fluid">
+    <h2><%=customer.username%></h2>
+    <p><b>Accoount Number:</b> <%=customer.accountNo%></p>
+    <p><b>Balance:</b> Rs. <%=customer.balance%></p>
+    <form action="/transfer" method="post">
+        <div class="d-grid gap-2 col-3 mx-auto">
+        <button type="submit" class="btn btn-primary btn- px-4 gap-3" name="senderId" value="<%=customer._id%>">Details</button>
+        </div>
+    </form>
+    </div>
+<% }) %> 
+</div>
+
+<%- include("partials/footer"); -%>

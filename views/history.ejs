@@ -1,0 +1,44 @@
+<%- include("partials/header"); -%>
+<%- include("partials/navigation"); -%>
+<div class="container">
+    <h2 class="text-center pt-4 fw-bold big-heading" style="font-family: sans-serif; font-weight: bold;">Transaction History
+    </h2>
+    <br>
+    <div class="table-responsive-sm">
+        <table class="table table-hover table-sm table-striped table-condensed table-bordered tb">
+            <thead>
+                <tr class="info">
+
+                    <th class="th">Sender</th>
+                    <th class="th">Receiver</th>
+                    <th class="th">Transfer Amount</th>
+                    <th class="th">Data&Time</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% transactionList.forEach((transaction)=>{ %>
+
+                    <tr class="tr">
+
+                        <td>
+                            <%=transaction.sender%>
+                        </td>
+                        <td>
+                            <%=transaction.receiver%>
+                        </td>
+                        <td>
+                            <%=transaction.amount%>
+                        </td>
+                        <td>
+                            <%=transaction.date%>
+                        </td>
+                    </tr>
+
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include("partials/footer"); -%>

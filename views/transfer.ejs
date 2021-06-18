@@ -1,0 +1,33 @@
+<%- include("partials/header"); -%>
+<%- include("partials/navigation"); -%>
+
+<div class="px-4 py-5 my-4 text-center container-fluid">
+    <% customerList.forEach((customer)=>{ %>
+        <% if(customer._id==customerSenderId){ %>
+            <h1><%=customer.username%></h1>
+            <p>Current Balance: Rs. <%=customer.balance%></p>
+        <% } %>
+    <% }) %>
+
+    <form action="/status" method="post">
+        <p>Transfer To:
+            <select name="customerReceiver" class="ms-1">
+                <% customerList.forEach((customer)=>{ %>
+                    <% if(customer._id !=customerSenderId){ %>
+                            <option><%=customer.username%></option>
+                    <% } %>
+                <% }) %>
+            </select>
+       </p>
+
+        <p>Amount: 
+            <input type="number"  class="ms-1" name="amonut" min=1 required autocomplete="off" placeholder="Enter amount">
+        </p>
+        <div class="d-grid gap-2 col-2 mx-auto">
+            <button  class="btn btn-primary  px-4 gap-3 "
+            name="customerSender" value=<%=customerSenderId%>>Transfer</button>
+        </div>
+    </form>
+</div>
+
+<%- include("partials/footer"); -%>
